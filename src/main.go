@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 	"github.com/gorilla/mux"
-	"pkg/controller"
+	"github.com/rafaelreiss/SimpleRestApi/pkg/controller"
 )
 
 func main() {

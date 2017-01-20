@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
-	"pkg/dao"
+	"github.com/rafaelreiss/SimpleRestApi/pkg/dao"
 )
 
 // Returns all the users
