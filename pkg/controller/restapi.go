@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
-	"net/http"
 	"github.com/rafaelreiss/SimpleRestApi/pkg/dao"
+	"net/http"
 )
 
 // Returns all the users
@@ -16,12 +16,30 @@ func GetAllUsers(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	json, err := json.Marshal(user)
+	js, err := json.Marshal(user)
 
 	if err != nil {
 		handleError(err, "Failed to load marshal data: %v", w)
 	}
-	w.Write(json)
+	w.Write(js)
+}
+
+// Update a User by his id
+func Update(w http.ResponseWriter, req *http.Request) {
+	user := dao.User{}
+
+	if err:= json.NewDecoder(req.Body).Decode(&user);err != nil{
+		handleError(err, "Error decoding json: %v", w)
+		return
+	}
+
+	if err := dao.Update(user); err != nil{
+		handleError(err, "Failed updating user: %v", w)
+		return
+	}
+
+	w.Write([]byte("OK"))
+
 }
 
 // Return an user by his id
@@ -31,16 +49,16 @@ func GetUserById(w http.ResponseWriter, req *http.Request) {
 
 	user, err := dao.FindById(id)
 	if err != nil {
-		handleError(err, "Failed to read: %v", w)
+		handleError(err, "Failed to find user : %v", w)
 		return
 	}
 
-	json, err := json.Marshal(user)
+	js, err := json.Marshal(user)
 	if err != nil {
 		handleError(err, "Failed to marshal %v", w)
 		return
 	}
-	w.Write(json)
+	w.Write(js)
 }
 
 // Creates an user
@@ -54,12 +72,11 @@ func CreateUser(w http.ResponseWriter, req *http.Request) {
 		handleError(err, "Faile to save :%v", w)
 		return
 	}
-	//uj, _ := json.Marshal(user)
-	//fmt.Fprintf(w, "%s", uj)
 
 	w.Write([]byte("OK"))
 }
 
+// Deletes an user
 func DeleteUser(w http.ResponseWriter, req *http.Request) {
 	vars := mux.Vars(req)
 	id := vars["id"]
@@ -72,14 +89,8 @@ func DeleteUser(w http.ResponseWriter, req *http.Request) {
 	w.Write([]byte("OK"))
 }
 
-//Errors handlers
+// This function returns from the rest api the error message
 func handleError(err error, msg string, w http.ResponseWriter) {
 	w.WriteHeader(http.StatusInternalServerError)
 	w.Write([]byte(fmt.Sprintf(msg, err)))
-}
-
-func check(err error) {
-	if err != nil {
-		panic(err)
-	}
 }

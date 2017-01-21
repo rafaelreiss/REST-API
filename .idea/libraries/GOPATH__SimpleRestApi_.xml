@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;SimpleRestApi&gt;">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Documents/go/src/pratice" />
+      <root url="file://$USER_HOME$/Documents/go/src/hello" />
+      <root url="file://$USER_HOME$/Documents/go/src/gopkg.in" />
+      <root url="file://$USER_HOME$/Documents/go/src/github.com" />
+      <root url="file://$USER_HOME$/Documents/go/src/networking" />
+      <root url="file://$USER_HOME$/Documents/go/src/lca2015-master" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Documents/go/src/pratice" />
+      <root url="file://$USER_HOME$/Documents/go/src/hello" />
+      <root url="file://$USER_HOME$/Documents/go/src/gopkg.in" />
+      <root url="file://$USER_HOME$/Documents/go/src/github.com" />
+      <root url="file://$USER_HOME$/Documents/go/src/networking" />
+      <root url="file://$USER_HOME$/Documents/go/src/lca2015-master" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>
